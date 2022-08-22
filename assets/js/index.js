@@ -1,4 +1,52 @@
-window.onload = function(){
+
+window.addEventListener("DOMContentLoaded", function () {
+  // get the form elements defined in your form HTML above
+
+  var form = document.getElementById("my-form");
+  // var button = document.getElementById("my-form-button");
+  var status = document.getElementById("status");
+
+  // Success and Error functions for after the form is submitted
+
+  function success() {
+    form.reset();
+    status.classList.add("success");
+    status.innerHTML = "Thanks for contacting me!";
+  }
+
+  function error() {
+    status.classList.add("error");
+    status.innerHTML = "Oops! There was a problem.";
+  }
+
+  // handle the form submission event
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var data = new FormData(form);
+    ajax(form.method, form.action, data, success, error);
+  });
+});
+
+// helper function for sending an AJAX request
+
+function ajax(method, url, data, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status === 200) {
+      success(xhr.response, xhr.responseType);
+    } else {
+      error(xhr.status, xhr.response, xhr.responseType);
+    }
+  };
+  xhr.send(data);
+}
+
+
+window.onload = function () {
   document.querySelector("#preloader").style.display = "none";
 }
 
@@ -49,7 +97,7 @@ $(document).ready(function () {
           size: 155,
           value: 0.95,
           thickness: 10,
-          fill: {color: "#FF00CC"}
+          fill: {color: "#00C88F"}
         }
         
         $('.circle .bar').circleProgress(circleProgressBar).on('circle-animation-progress', function (event, progress, stepValue) {
@@ -76,12 +124,12 @@ $(document).ready(function () {
       element: document.getElementsByClassName('progress'),
       handler: function (direction) {
           var p = $('.progress-bar');
-          $(p[0]).css({ "width": "98%", "background": "#FF00CC", "transition": "all 1s linear" });
-          $(p[1]).css({ "width": "89%", "background": "#FF00CC", "transition": "all 1.5s linear" });
-          $(p[2]).css({ "width": "80%", "background": "#FF00CC", "transition": "all 1.8s linear" });
-          $(p[3]).css({ "width": "60%", "background": "#FF00CC", "transition": "all 2s linear" });
-          $(p[4]).css({ "width": "65%", "background": "#FF00CC", "transition": "all 2.3s linear" });
-          $(p[5]).css({ "width": "75%", "background": "#FF00CC", "transition": "all 2.7s linear" });
+          $(p[0]).css({ "width": "98%", "background": "#00C88F", "transition": "all 1s linear" });
+          $(p[1]).css({ "width": "89%", "background": "#00C88F", "transition": "all 1.5s linear" });
+          $(p[2]).css({ "width": "80%", "background": "#00C88F", "transition": "all 1.8s linear" });
+          $(p[3]).css({ "width": "60%", "background": "#00C88F", "transition": "all 2s linear" });
+          $(p[4]).css({ "width": "65%", "background": "#00C88F", "transition": "all 2.3s linear" });
+          $(p[5]).css({ "width": "75%", "background": "#00C88F", "transition": "all 2.7s linear" });
       }, offset: '90%'
   });
 
@@ -161,7 +209,7 @@ $(document).ready(function () {
     // Mobile Browser's head theme
     var m = document.createElement('meta'); 
     m.name = 'theme-color';
-    m.content = '#FF00CC';
+    m.content = '#00C88F';
     document.head.appendChild(m);
 
   });
@@ -194,6 +242,6 @@ $(document).ready(function () {
     });
   });
 
-  
+
 
 });
