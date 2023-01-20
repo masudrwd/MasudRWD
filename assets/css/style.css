@@ -529,6 +529,7 @@ nav .nav-bar li .active::before{
 
 .home .row img{
     width: 60%;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.238) );
 }
 
 /* about section :start */
@@ -1154,6 +1155,18 @@ img.mfp-img {
 
 .contact .contact-box form input[type="email"]{
     text-transform: none !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.contact .contact-box form input::-webkit-outer-spin-button,
+.contact .contact-box form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.contact .contact-box form input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .contact .contact-box form textarea{
